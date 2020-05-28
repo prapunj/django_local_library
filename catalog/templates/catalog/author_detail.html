@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>{{ author.first_name }} {{author.last_name}}</h1>
+
+  <p><strong>DOB:</strong> {{ author.date_of_birth }}</p> <!-- author detail link not yet defined -->
+  <p><strong>Death:</strong> {{ author.date_of_death }}</p>
+   
+  <div style="margin-left:20px;margin-top:20px">
+    <h4>Books</h4>
+
+    {% for book in book_list %}
+      <hr>
+      {% if book.author == '{{author.last_name}},{{author.first_name}}' %}
+        <h5>{{book.title}}</h5>
+      
+        <p><strong>DESC: </strong> {{ book.summary }}</p>
+      {% endif %}
+      
+    {% endfor %}
+  </div>
+{% endblock %}
